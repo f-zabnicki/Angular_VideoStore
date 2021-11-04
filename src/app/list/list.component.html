@@ -1,4 +1,4 @@
-<<div *ngFor="let item of array index as i" class="list">
+<div *ngFor="let item of array index as i" class="list">
     <section class="item" *ngIf="!item.toggle">
         <div class="title"  [ngStyle]="{'color': item.ammount === 0 ? 'red' : 'black'}">Title: {{item.title}}</div>
         <button class="rentBtn" (click)="Rent(item)" [disabled]="item.ammount === 0" >Rent</button>
