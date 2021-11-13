@@ -1,0 +1,51 @@
+<div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <p>
+            <label >Title:</label>
+            <input type="text" formControlName="title"/>
+        </p>
+        <p>
+        <label>Date:</label>
+        <input type="text" formControlName="addedDate" />
+        </p>
+        <p>
+            <label>Category:</label>
+            <input type="text" formControlName="category" />
+        </p>
+        <p>
+            <label>Production:</label>
+            <input type="text" formControlName="production" />
+        </p>
+        <p>
+            <label>Description:</label>
+            <input type="text" formControlName="description" />
+        </p>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" (click)="AgeRestriction()">
+            <label class="form-check-label" for="flexCheckDefault">
+              Age restriction
+            </label>
+        </div>
+        <div *ngIf="flexCheckDefault == true">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    +12
+                </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
+            <label class="form-check-label" for="flexRadioDefault2">
+                +16
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
+            <label class="form-check-label" for="flexRadioDefault2">
+                +18
+            </label>
+        </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Save Changes</button>
+    </form>
+</div>

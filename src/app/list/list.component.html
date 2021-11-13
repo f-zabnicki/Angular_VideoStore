@@ -1,19 +1,29 @@
-<div *ngFor="let item of array index as i" class="list">
+<app-form (addedFilm)="addNew($event)"></app-form>
+<div *ngFor="let item of array index as index" class="list">
     <section class="item" *ngIf="!item.toggle">
         <div class="title"  [ngStyle]="{'color': item.ammount === 0 ? 'red' : 'black'}">Title: {{item.title}}</div>
         <button class="rentBtn" (click)="Rent(item)" [disabled]="item.ammount === 0" >Rent</button>
         <button class="detailsBtn" (click)="item.toggle=!item.toggle">Details</button>
     </section>
     <section class="details" *ngIf="item.toggle">
-        <div class="title-details"  [ngStyle]="{'color': item.ammount === 0 ? 'red' : 'black'}">Title: {{item.title}}</div>
-        <img class="thumbnail" src="../../assets/{{item.title}}.jpg"/>
-        <div>Ammount: {{item.ammount}}
-            <button class="rentBtn-details" (click)="Rent(item)" [disabled]="item.ammount === 0" >Rent</button>
-            <button class="detailsBtn-details" (click)="item.toggle=!item.toggle">Close</button>
+        <div *ngIf="!edit">
+
+            <div class="title-details"  [ngStyle]="{'color': item.ammount === 0 ? 'red' : 'black'}">Title: {{item.title}}</div>
+            <img class="thumbnail" src="../../assets/{{item.title}}.jpg"/>
+            <div>Ammount: {{item.ammount}}
+            </div>
         </div>
+        <button class="rentBtn-details" (click)="Rent(item)" [disabled]="item.ammount === 0" >Rent</button>
+        <button class="detailsBtn-details" (click)="item.toggle=!item.toggle">Close</button>
+        <button class="detailsBtn-details" (click)="ShowEdit()">Edit</button>
+        <div *ngIf="edit">
+            <app-edit-form [toBeEdited]="item" (newFilm)="updated($event, index)"></app-edit-form>
+        </div>
+        <div *ngIf="!edit">
         <div>Catrgory: {{item.category}}</div>
         <div>Date added: {{item.addedDate | date: 'mediumDate'}}</div>
         <div>Production: {{item.production}}</div>
         <p class="description">{{(item.lenghtOfDescription>200)? (item.description | slice:0:200)+'..':(item.description)}}</p>
+        </div>
     </section>
 </div>

@@ -10,7 +10,7 @@ export class Film{
     description: string;
     lenghtOfDescription:number;
 
-    constructor(title: string, date: Date, ammount: number, category: FilmCategory, toggle: boolean, production: string, description: string, lenghtOfDescription: number) {
+    constructor(title: string, date: Date, ammount: number = 0, category: FilmCategory, toggle: boolean, production: string, description: string, lenghtOfDescription: number) {
         this.ammount = ammount;
         this.title = title;
         this.category = category;
